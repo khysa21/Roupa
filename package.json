@@ -6,7 +6,7 @@
   "scripts": {
     "install": "cd ./client && npm i . && cd ../server && npm i .",
     "start:server": "node ./server",
-    "start:client": "cd ./client && BROWSER=none npm start && cd ..",
+    "start:client": "cd ./client && npm start && cd ..",
     "start:server-client": "start-test start:server 3001/events start:client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
