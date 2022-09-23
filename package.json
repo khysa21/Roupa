@@ -1,0 +1,23 @@
+{
+  "name": "roupa",
+  "version": "1.0.0",
+  "description": "An e-commerce app for used clothes.",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd ./client && npm i . && cd ../server && npm i .",
+    "start:server": "node ./server",
+    "start:client": "cd ./client && BROWSER=none npm start && cd ..",
+    "start:server-client": "start-test start:server 3001/events start:client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khysa21/Roupa.git"
+  },
+  "author": "Klaus Hysa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khysa21/Roupa/issues"
+  },
+  "homepage": "https://github.com/khysa21/Roupa#readme"
+}
