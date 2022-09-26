@@ -3,12 +3,15 @@ const multer = require('multer');
 const item = require("../models/Item");
 
 const storage = multer.diskStorage({
-  destination: `${__dirname}/images/`,
+  destination: function (req, file, cb) {
+    cb(null, './images/');//
+  },
   filename: (req, file, cb) => {
     cb(null , file.originalname); 
   }
 });
-const uploadImage = multer({storage: storage}).single('demo_image');
+
+const uploadImage = multer({ storage: storage });
 
 async function getAllItems(req, res) {
   try {
@@ -22,6 +25,7 @@ async function getAllItems(req, res) {
 
 async function createItem(req, res) {
   try {
+    console.log(req.body);
     const newItem = await item.create(req.body);
     await newItem.save();
     res.status(201).send(newItem);

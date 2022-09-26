@@ -18,30 +18,38 @@ const initialState = {
   image: "",
   userid: "",
 };
-
+const initialFile = {selectedFile: null};
 export default function SellItem(props) {
   const navigate = useNavigate();
   const [state, setState] = useState(initialState);
-  state.userid=props.userdata.id;
-  let file={selectedFile: null};
-  const onFileChange = e =>{
-    file.selectedFile=e.target.files[0];
-  };
+  const [file, setFile] = useState(initialFile);
 
+  if (!props.userdata) {
+    navigate('/');
+  } else state.userid=props.userdata.id;
+  //alert(state.userid);
+  
+  const onFileChange = e =>{
+    setFile({selectedFile: e.target.files[0]});
+    console.log(file);
+  };
+// center kto
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const { id, name, category, description, status, price, quantity, image, userid } = state;
-    alert(file.selectedFile)
-    const file = await apiService.uploadImage(file.selectedFile);
-    
-    const res = await apiService.addItem(state);
+    const { id, name, category, description, status, price, quantity, image, userid } = state;
+    // alert(JSON.stringify(file.selectedFile));
+
+    console.log(file.selectedFile);
+    const fileimage = await apiService.uploadImage(file.selectedFile);at
+    // alert(JSON.stringify(fileimage));
+    const res = await apiService.addItem({ id: id, name: name, category: category, description: description, status:status, price:price, quantity:quantity, image:fileimage.originalname, userid:userid });
     if(res){
-      alert(`${res.message}`);
-      setState(initialState);
+      // alert(`${res.message}`);
+      // setState();
     } else {
-      props.setIsAuthenticated(true);
-      props.setUserData(res);
-      auth.login(() => navigate('/items'));
+      // props.setIsAuthenticated(true);
+      // props.setUserData(res);
+      navigate('/items');
     }
   };
 
@@ -63,9 +71,9 @@ export default function SellItem(props) {
     );
   };
   return (
-    <section>
-      <h2>Add an Item</h2>
-      <form className="form" onSubmit={handleSubmit}>
+    <center>
+      <h2>Add Item</h2>
+      <form className="form" onSubmit={handleSubmit} encType="multipart/form-data">
         <input
           type="text"
           placeholder="Item Name"
@@ -84,17 +92,18 @@ export default function SellItem(props) {
           placeholder="Enter Description here"
           name="description"
           onChange={handleChange}
-        >{state.description}</textarea>
+          value={state.description}
+        />
         
         <input
-          type="text"
+          type="number"
           placeholder="Enter Price"
           name="price"
           value={state.price}
           onChange={handleChange}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter Quantity"
           name="quantity"
           value={state.quantity}
@@ -102,9 +111,9 @@ export default function SellItem(props) {
         />
         <input type='file' onChange={onFileChange} />
         <button className="form-submit" type="submit" disabled={validateForm()}>
-          &nbsp;Register&nbsp;
+          &nbsp;Add Item&nbsp;
         </button>
       </form>
-    </section>
+    </center>
   );
 }

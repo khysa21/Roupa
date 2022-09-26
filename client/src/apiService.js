@@ -12,12 +12,26 @@ apiService.register = (user) => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
-apiService.uploadItem = () => {
-  //TODO: 
-
+apiService.addItem = (item) => {
+  return fetch(`${BASE_URL}/createItem`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
 };
-apiService.uploadImage = () => {
-
+apiService.uploadImage = (image) => {
+  var data = new FormData();
+  data.append('file', image, image.name);
+  console.log(image);
+  return fetch(`${BASE_URL}/image`, {
+    method: 'POST',
+    body: data
+    // headers: { 'Content-Type': 'multipart/form-data' }
+  }).then((res)=>res.json());
 };
 apiService.login = (user) => {
   return fetch(`${BASE_URL}/login`, {

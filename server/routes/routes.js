@@ -9,8 +9,14 @@ router.post("/register", user.createUser );
 router.get("/getUser", user.getUser );
 router.get("/getitems", item.getAllItems );
 router.post("/createItem", item.createItem );
-router.post("/image", item.uploadImage, (req, res) =>{
-  if(req.file) return res.json({msg: 'uploaded file'})
-} );
+router.post("/image", item.uploadImage.single('file'), (req, res) => {
+  const file = req.file;
+  if (!file) {
+    const error = new Error('Please upload a file');
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  res.send(file);
+} ); 
 
 module.exports = router;

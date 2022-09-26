@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { addItem } from "../store/cart/actions";
 
 const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
