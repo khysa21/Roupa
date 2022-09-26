@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ handleChange, label, ...otherProps }) => (
+const FormInput = ({ handleChange, label, ...otherProps }) => (
   <div className="group">
     <input className="form-input" onChange={handleChange} {...otherProps} />
     {label ? (
@@ -15,4 +15,4 @@ const Input = ({ handleChange, label, ...otherProps }) => (
   </div>
 );
 
-export default Input;
+export default FormInput;

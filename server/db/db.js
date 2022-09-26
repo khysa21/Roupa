@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(`mongodb://localhost:27017/Roupa`,
+mongoose.connect(`mongodb://127.0.0.1:27017/Roupa`,
   { useNewUrlParser: true, useUnifiedTopology: true }, 
   (error) => {
     if (error) throw error;

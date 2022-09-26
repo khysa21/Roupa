@@ -22,7 +22,15 @@ async function createItem(req, res) {
   }
 }
 
+async function updateItem(req, res) {
+  item.findOneAndUpdate({id: req.body.id}, req.newData, {upsert: true}, function(err, doc) {
+    if (err) return res.send(500, {error: err});
+    return res.send('Succesfully saved.');
+  });
+}
+
 module.exports = {
   getAllItems,
   createItem,
+  updateItem,
 };
