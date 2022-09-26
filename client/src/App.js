@@ -11,12 +11,13 @@ import Login from './components/sign-in';
 function App() {
   const initialState = auth.isAuthenticated();
   const [isAuthenticated, setIsAuthenticated] = useState(initialState);
+  const [userdata, setUserData] = useState()
 
   return (
     <div className="App">
       <Router>
-      <Navbar isAuthenticated={isAuthenticated} />
-      <Dashboard setIsAuthenticated={setIsAuthenticated} />
+      <Navbar isAuthenticated={isAuthenticated} userdata={userdata} />
+      <Dashboard setIsAuthenticated={setIsAuthenticated} setUserData={setUserData} userdata={userdata} />
       </Router>
     </div>
   );

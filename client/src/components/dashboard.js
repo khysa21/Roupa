@@ -4,26 +4,27 @@ import Register from './sign-up';
 import SignIn from './sign-in';
 import ListItems from './listitems';
 import Logout from './logout';
+import SellItem from './sellItem';
 // import Home from './Home';
 
-const Dashboard = ({ setIsAuthenticated }) => {
+const Dashboard = ({ setIsAuthenticated, setUserData, userdata }) => {
   return (
     <div className="dashboard">
       <Routes>
         <Route
           path="/register"
-          element={<Register setIsAuthenticated={setIsAuthenticated} />}
+          element={<Register setIsAuthenticated={setIsAuthenticated} setUserData={setUserData}/>}
         />
         <Route
           path="/login"
-          element={<SignIn setIsAuthenticated={setIsAuthenticated} />}
+          element={<SignIn setIsAuthenticated={setIsAuthenticated} setUserData={setUserData} />}
         />
-        <Route path="/items" element={<ListItems />} />
+        <Route path="/items" element={<ListItems userdata={userdata} />} />
+        <Route path="/sell" element={<SellItem userdata={userdata} />} />
         <Route
           path="/logout"
-          element={<Logout setIsAuthenticated={setIsAuthenticated} />}
+          element={<Logout setIsAuthenticated={setIsAuthenticated} setUserData={setUserData} />}
         />
-        <Route path="/items" element={<ListItems  />} /> 
       </Routes>
     </div>
   );

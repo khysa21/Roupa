@@ -12,7 +12,13 @@ apiService.register = (user) => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
+apiService.uploadItem = () => {
+  //TODO: 
 
+};
+apiService.uploadImage = () => {
+
+};
 apiService.login = (user) => {
   return fetch(`${BASE_URL}/login`, {
     method: 'POST',

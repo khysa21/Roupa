@@ -26,12 +26,14 @@ const Login = (props) => {
     const { email, password } = state;
     const user = { email, password };
     const res = await apiService.login(user);
+    console.log(`${JSON.stringify(res)}`);
     if (res.error) {
       alert(`${res.message}`);
       setState(initialState);
     } else {
       props.setIsAuthenticated(true);
-      auth.login(() => navigate("/profile"));
+      props.setUserData(res);
+      auth.login(() => navigate("/items"));
     }
   };
 
@@ -40,8 +42,8 @@ const Login = (props) => {
   };
 
   return (
-    <section>
-      <h2 className="header">Sign In or Sign Up</h2>
+    <center>
+      <h2 className="header">Sign In</h2>
       <form className="form" onSubmit={handleSubmit}>
         <FormInput
           type="text"
@@ -50,6 +52,7 @@ const Login = (props) => {
           value={state.email}
           onChange={handleChange}
         />
+        
         <FormInput
           className="password"
           type="password"
@@ -62,7 +65,7 @@ const Login = (props) => {
           &nbsp;Login&nbsp;
         </button>
       </form>
-    </section>
+    </center>
   );
 };
 

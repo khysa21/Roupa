@@ -1,23 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Navbar = ({ isAuthenticated }) => {
+const Navbar = ({ isAuthenticated, userdata }) => {
   return (
     <nav>
       <ul>
         {!isAuthenticated ? (
           <>
-            <li>
+            <li class="links">
               <Link to="/register">Register</Link>
             </li>
-            <li>
+            <li class="links">
               <Link to="/login">Login</Link>
             </li>
           </>
         ) : (
           <>
+          <div>Welcome {userdata.name}  {userdata.surname}</div>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/items">List of Items</Link>
+            </li>
+            <li>
+              <Link to="/sell">Sell Items</Link>
             </li>
             <li>
               <Link to="/logout">Logout</Link>

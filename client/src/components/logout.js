@@ -13,11 +13,12 @@ const Logout = (props) => {
 
   const handleAuth = () => {
     props.setIsAuthenticated(false);
+    props.setUserData();
     auth.logout(() => navigate("/"));
   };
 
   return (
-    <div>
+    <div class="logout">
       <h2>Are you sure you want to log out?</h2>
       <Link to="/">
         <button className="confirm-btn">No</button>

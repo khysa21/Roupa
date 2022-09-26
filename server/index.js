@@ -14,6 +14,7 @@ const corsConfig = {
   credentials: true,
 };
 app.use(cors(corsConfig));
+app.use(express.static('images'));
 app.use(express.json());
 
 app.use(
