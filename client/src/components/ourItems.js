@@ -3,13 +3,13 @@ import apiService from "../apiService";
 import Item from './Item';
 import './Item.css';
 
-const BuyItems = (props) => {
+const OurItems = (props) => {
   const [data, setData] = useState([]);
   useEffect(()=>{
     async function getdata(){
       const lista=await apiService.getitems();
-      const onsale=lista.filter((el) => el.status==='onsale')
-      setData(onsale);
+      const ouritems=lista.filter((el) => el.userid===props.userdata.id)
+      setData(ouritems);
     }
     getdata();
   },[]);
@@ -23,4 +23,4 @@ const BuyItems = (props) => {
   );
 }
 
-export default BuyItems;
+export default OurItems;

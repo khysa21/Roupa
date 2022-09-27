@@ -45,16 +45,18 @@ apiService.login = (user) => {
     .catch((err) => console.log(err));
 };
 
-apiService.profile = () => {
+apiService.getitems = (props) => {
   //to see the products sold or change something in orders 
-  return fetch(`${BASE_URL}/me`, {
+  const items=fetch(`${BASE_URL}/getitems`, {
     method: 'GET',
     credentials: 'include',
     mode: 'cors',
     headers: { 'Content-Type': 'application/json' },
   })
     .then((res) => res.json())
+    // .then(data => { props.setData(data); })
     .catch((err) => console.log(err));
+  return items;
 };
 
 apiService.logout = () => {

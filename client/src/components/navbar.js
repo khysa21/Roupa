@@ -28,6 +28,9 @@ const Navbar = ({ isAuthenticated, userdata }) => {
             <li>
               <Link to="/sell">Sell Items</Link>
             </li>
+            <li>
+              <Link to="/ouritems">Our Items Status</Link>
+            </li>
             <li className="logout">
               <Link to="/logout">Logout</Link>
             </li>

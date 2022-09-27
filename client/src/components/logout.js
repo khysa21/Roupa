@@ -19,7 +19,7 @@ const Logout = (props) => {
 
   return (
     <div class="logout-button">
-      <h2>Are you sure you want to log out?</h2>
+      <h2 className="matching">Are you sure you want to log out?</h2>
       <Link to="/">
         <button className="confirm-btn">No</button>
       </Link>

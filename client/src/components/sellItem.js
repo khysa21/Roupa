@@ -1,6 +1,5 @@
 //This is the component to sell items (upload item)
 import React, { useState } from 'react';
-import auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
 import apiService from './../apiService';
 import { v4 as uuid } from 'uuid';
@@ -18,7 +17,9 @@ const initialState = {
   image: "",
   userid: "",
 };
+
 const initialFile = {selectedFile: null};
+
 export default function SellItem(props) {
   const navigate = useNavigate();
   const [state, setState] = useState(initialState);
@@ -40,17 +41,20 @@ export default function SellItem(props) {
     // alert(JSON.stringify(file.selectedFile));
 
     console.log(file.selectedFile);
-    const fileimage = await apiService.uploadImage(file.selectedFile);at
+    const fileimage = await apiService.uploadImage(file.selectedFile);
     // alert(JSON.stringify(fileimage));
     const res = await apiService.addItem({ id: id, name: name, category: category, description: description, status:status, price:price, quantity:quantity, image:fileimage.originalname, userid:userid });
     if(res){
-      // alert(`${res.message}`);
+      alert(`${res}`);
+      console.log("success");
+      navigate('/items');//TODO later
       // setState();
     } else {
       // props.setIsAuthenticated(true);
       // props.setUserData(res);
-      navigate('/items');
+      console.log("no response");
     }
+    
   };
 
   const handleChange = (e) => {
@@ -113,6 +117,7 @@ export default function SellItem(props) {
         <button className="form-submit" type="submit" disabled={validateForm()}>
           &nbsp;Add Item&nbsp;
         </button>
+        <button className="form-submit" type="reset">Reset</button> 
       </form>
     </center>
   );

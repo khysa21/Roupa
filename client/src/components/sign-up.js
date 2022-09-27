@@ -98,7 +98,7 @@ const SignUp = (props) => {
         {checkPasswordSame() ? (
           <p>Passwords match</p>
         ) : (
-          <p>Passwords do not match</p>
+          <p className="matching">Passwords do not match</p>
         )}
         <button class="form-submit" type="submit" disabled={validateForm()}>
           &nbsp;Register&nbsp;

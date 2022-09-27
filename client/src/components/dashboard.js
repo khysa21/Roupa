@@ -6,6 +6,7 @@ import ListItems from './listitems';
 import Logout from './logout';
 import SellItem from './sellItem';
 import BuyItem from './buyitems';
+import OurItems from './ourItems';
 
 const Dashboard = ({ setIsAuthenticated, setUserData, userdata }) => {
   return (
@@ -22,6 +23,7 @@ const Dashboard = ({ setIsAuthenticated, setUserData, userdata }) => {
         <Route path="/items" element={<ListItems userdata={userdata} />} />
         <Route path="/sell" element={<SellItem userdata={userdata} />} />
         <Route path="/buy" element={<BuyItem userdata={userdata} />} />
+        <Route path="/ouritems" element={<OurItems userdata={userdata} />} />
         <Route
           path="/logout"
           element={<Logout setIsAuthenticated={setIsAuthenticated} setUserData={setUserData} />}

@@ -47,7 +47,7 @@ const Login = (props) => {
       <form className="form" onSubmit={handleSubmit}>
         <FormInput
           type="text"
-          label="example@mail.com"
+          placeholder="example@mail.com"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -56,7 +56,7 @@ const Login = (props) => {
         <FormInput
           className="password"
           type="password"
-          label="Password"
+          placeholder="Password"
           name="password"
           value={state.password}
           onChange={handleChange}
