@@ -18,5 +18,6 @@ router.post("/image", item.uploadImage.single('file'), (req, res) => {
   }
   res.send(file);
 } ); 
+router.post("/update", item.updateItem );
 
 module.exports = router;

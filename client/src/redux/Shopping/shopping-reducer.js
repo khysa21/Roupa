@@ -1,22 +1,29 @@
 import apiService from "../../apiService";
 import * as actionTypes from "./shopping-types";
 
-
-async function getdata() {
-  const lista = await apiService.getitems();
-  const out=lista;
-  return out;
+// async function getdata() {
+//   const lista = await apiService.getitems();
+//   const out=lista;
+//   return out;
+// } 
+function getRoupa(){
+  const obj={
+    cart: [],
+    currentItem: null,
+  };
+  apiService.getitems().then((data) => {
+    obj.products=data;
+  });
+  return obj;
 }
-function test() {
-  return Promise.resolve(getdata());
-}
-const items = test();
 
-const INITIAL_STATE = {
-  products: items,
-  cart: [],
-  currentItem: null,
-};
+const INITIAL_STATE=getRoupa();
+
+// const INITIAL_STATE = {
+//   products: items.data,
+//   cart: [],
+//   currentItem: null,
+// };
 
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {

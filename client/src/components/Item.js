@@ -22,7 +22,7 @@ const Item = ({ item }) => {
       <div className="singleItem__details">
         <p className="details__title">{item.name}  </p>
         {/* <p className="details__description">{item.description}</p> */}
-        <p className="details__price">$ {item.price}</p>
+        <p className="details__price">£ {item.price}</p>
 
         <button href="/"
           onClick={ () => {

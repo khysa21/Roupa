@@ -69,5 +69,15 @@ apiService.logout = () => {
     .then((res) => res.json())
     .catch((err) => console.log(err));
 };
-
+apiService.updateItem = (item) => {
+  return fetch(`${BASE_URL}/update`, {
+    method: 'POST',
+    credentials: 'include',
+    mode: 'cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(item),
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
 export default apiService;

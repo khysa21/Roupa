@@ -96,7 +96,7 @@ const SignUp = (props) => {
           // className='${checkPasswordSame()? `green`:`red`}'
         />
         {checkPasswordSame() ? (
-          <p>Passwords match</p>
+          <p></p>
         ) : (
           <p className="matching">Passwords do not match</p>
         )}

@@ -102,7 +102,7 @@ input,textarea{
 }
 .logout{
   right: 20%;
-  position: absolute;
+  position:sticky;
 }
 .confirm-btn{
   margin: 5px;

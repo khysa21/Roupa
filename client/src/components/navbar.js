@@ -6,7 +6,7 @@ const Navbar = ({ isAuthenticated, userdata }) => {
   const [cartCount, setCartCount] = useState(0);
 
   const cart = useSelector(state => state.shop.cart);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   useEffect(() => {
     let count = 0;
     cart.forEach((item) => {
@@ -42,13 +42,15 @@ const Navbar = ({ isAuthenticated, userdata }) => {
             <li>
               <Link to="/ouritems">Clothes Listed</Link>
             </li>
+            <li className="logout">
+              <Link to="/logout">Logout</Link>
+            </li>
             <li>
               <Link to="/help">Help</Link>
             </li>
             <li className="cart_nav">
               <Link to="/cart">
                 <div className="navbar__cart">
-                  <h3 className="cart__title">Cart</h3>
                   <img
                     className="cart__image"
                     src="https://cdn-icons-png.flaticon.com/512/102/102276.png"
@@ -58,9 +60,6 @@ const Navbar = ({ isAuthenticated, userdata }) => {
                   <div className="cart__counter">{cartCount}</div>
                 </div>
               </Link>
-            </li>
-            <li className="logout">
-              <Link to="/logout">Logout</Link>
             </li>
           </>
         )}

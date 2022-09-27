@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import apiService from "../apiService";
 import "./Cart.css";
-
-import { connect } from "react-redux";
-
+import {  removeFromCart} from "../redux/Shopping/shopping-actions";
 import CartItem from "./CartItem";
+import StripCheckoutButton from './stripe'
 
-const Cart = ({ cart }) => {
+const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
 
+  const cart = useSelector(state => state.shop.cart);
+  const dispatch=useDispatch();
   useEffect(() => {
     let items = 0;
     let price = 0;
@@ -22,6 +25,17 @@ const Cart = ({ cart }) => {
     setTotalPrice(price);
   }, [cart, totalPrice, totalItems, setTotalPrice, setTotalItems]);
 
+  const handleBuy = () => {
+    if(window.confirm('Do you want to buy the items?')) {
+
+      cart.forEach((item) => {
+        //apiService.updateItem(item);//status is changed to sold
+        dispatch(removeFromCart(item))
+      });
+      
+    }
+
+  };
   return (
     <div className="cart">
       <div className="cart__items">
@@ -33,20 +47,12 @@ const Cart = ({ cart }) => {
         <h4 className="summary__title">Cart Summary</h4>
         <div className="summary__price">
           <span>TOTAL: ({totalItems} items)</span>
-          <span>$ {totalPrice}</span>
+          <span>£ {totalPrice}</span>
         </div>
-        <button className="summary__checkoutBtn">
-          Proceed To Checkout
-        </button>
+        <StripCheckoutButton />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.shop.cart,
-  };
-};
-
-export default connect(mapStateToProps)(Cart);
+export default Cart;

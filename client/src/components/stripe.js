@@ -3,12 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 
 const StripCheckoutButton = ({ price }) => {
   const totalPrice = price * 100;
-  const publicKey =""
-    
-
-  const onToken = (_token) => {
-    alert("Purchase completed successfully!");
-  };
+  const publicKey ="pk_test_51GuslRIBNethBXyvGHJxL6cxvcl2Zbpg8k2TvPdumlaYterjS5YdmvSypMZMsihIno9KmSqKxOV4dMl8qtVa4w5C00QK8Dyuom"
 
   return (
     <StripeCheckout
@@ -16,11 +11,10 @@ const StripCheckoutButton = ({ price }) => {
       name="Roupa LTD"
       billingAddress
       shippingAddress
-      image="https://svgshare.com/i/M8B.svg"
+      // url="../../server/images/pexels-sebastiaan-stam-1097456.jpg"
       description={`Your total is £${price}`}
       amount={totalPrice}
       panelLabel="Purchase Now"
-      token={onToken}
       stripeKey={publicKey}
     />
   );

@@ -13,7 +13,7 @@ const BuyItems = (props) => {
     }
     getdata();
   },[]);
-  console.log(data);
+  //console.log(data);
   return (
     <div className="products">
       {data.map((product) => (
