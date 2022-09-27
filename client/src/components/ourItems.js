@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from "react";
 import apiService from "../apiService";
-import Item from './Item';
+import MyItem from './myItems';
 import './Item.css';
 
 const OurItems = (props) => {
@@ -17,7 +17,7 @@ const OurItems = (props) => {
   return (
     <div className="products">
       {data.map((product) => (
-        <Item key={product.id} item={product} />
+        <MyItem key={product.id} item={product} />
       ))}
     </div>
   );

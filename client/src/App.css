@@ -142,6 +142,7 @@ li a:hover {
   background-color: #111;
 }
 .App{
+  overflow-y: scroll;
   background-image: url("../../server/images/pexels-sebastiaan-stam-1097456.jpg");
   /* filter: blur(8px); */
   /* -webkit-filter: blur(8px); */

@@ -117,7 +117,7 @@ export default function SellItem(props) {
         <button className="form-submit" type="submit" disabled={validateForm()}>
           &nbsp;Add Item&nbsp;
         </button>
-        <button className="form-submit" type="reset">Reset</button> 
+        {/* <button className="form-submit" type="reset">Reset</button>  */}
       </form>
     </center>
   );

@@ -20,7 +20,7 @@ const Dashboard = ({ setIsAuthenticated, setUserData, userdata }) => {
           path="/login"
           element={<SignIn setIsAuthenticated={setIsAuthenticated} setUserData={setUserData} />}
         />
-        <Route path="/items" element={<ListItems userdata={userdata} />} />
+        {/* <Route path="/items" element={<ListItems userdata={userdata} />} /> */}
         <Route path="/sell" element={<SellItem userdata={userdata} />} />
         <Route path="/buy" element={<BuyItem userdata={userdata} />} />
         <Route path="/ouritems" element={<OurItems userdata={userdata} />} />
