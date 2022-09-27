@@ -27,10 +27,11 @@
 
 .details__title,
 .details__price {
-  padding-top: 25%;
-  margin-top: 50%;
-  font-size: 1.4rem;
+  /* padding-top: 25%;
+  margin-top: 50%; */
+  font-size: 1.5rem;
   font-weight: bold;
+  /* justify-content:space-evenly; */
 }
 
 .details__addBtn {

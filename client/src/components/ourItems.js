@@ -10,6 +10,7 @@ const OurItems = (props) => {
       const lista=await apiService.getitems();
       const ouritems=lista.filter((el) => el.userid===props.userdata.id)
       setData(ouritems);
+      console.log(ouritems);
     }
     getdata();
   },[]);

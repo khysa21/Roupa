@@ -1,7 +1,17 @@
 import apiService from "../../apiService";
 import * as actionTypes from "./shopping-types";
 
-const items=apiService.getitems();
+
+async function getdata() {
+  const lista = await apiService.getitems();
+  const out=lista;
+  return out;
+}
+function test() {
+  return Promise.resolve(getdata());
+}
+const items = test();
+
 const INITIAL_STATE = {
   products: items,
   cart: [],
@@ -11,6 +21,7 @@ const INITIAL_STATE = {
 const shopReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
+      console.log(state.products);
       const item = state.products.find(
         (product) => product.id === action.payload.id
       );
